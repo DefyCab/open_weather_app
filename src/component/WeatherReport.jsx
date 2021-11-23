@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-// import {} from "semantic-ui-react"
+import Forecast from "../modules/Forecast";
 
 const WeatherReport = () => {
-  const fetchLocation = async () => {
 
-  
-  };
+  const [geolocation, setGeolocation] = useState({});
+
+  // const fetchUserPosition = async () => {
+  //   const response = await Forecast.getCurrentPosition();
+  //   setUserPosition(response)
+  // };
 
   useEffect(() => {
-    fetchLocation();
-  }, []);
+    navigator.geolocation.getCurrentPosition(position => { setGeolocation(position.coords) });
+    debugger;
+    //fetchUserPosition();
+  });
 
-  return <div></div>;
+  return (
+    <div>
+      <input type="text" value={geolocation.latitude} />
+      <input type="text" value={geolocation.longitude} />
+    </div>
+  );
 };
 
 export default WeatherReport;
