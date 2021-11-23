@@ -1,10 +1,11 @@
 import React from "react";
+import { Container, Header } from "semantic-ui-react";
 
 const App = () => {
   return (
-    <div>
-      <h1>Weather App</h1>
-    </div>
+    <Container>
+      <Header>Weather App</Header>
+    </Container>
   );
 };
 
