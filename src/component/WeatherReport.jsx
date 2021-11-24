@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Forecast from "../modules/Forecast";
 
 const WeatherReport = () => {
 
   const [geolocation, setGeolocation] = useState({});
 
-  // const fetchUserPosition = async () => {
-  //   const response = await Forecast.getCurrentPosition();
-  //   setUserPosition(response)
-  // };
+  const fetchUserCoordinates = () => {
+    navigator.geolocation.getCurrentPosition(position => { setGeolocation(position.coords) });
+  };
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(position => { setGeolocation(position.coords) });
-    debugger;
-    //fetchUserPosition();
-  });
+    fetchUserCoordinates();
+  }, []);
 
   return (
     <div>
