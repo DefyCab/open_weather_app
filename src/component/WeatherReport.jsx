@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import OPEN_CAGE_APPID from '../openCageID';
+import OPEN_WEATHER_APPID from '../openWeatherID';
 
 const WeatherReport = () => {
   const [geolocation, setGeolocation] = useState({})
@@ -19,9 +21,9 @@ const WeatherReport = () => {
       'https://api.opencagedata.com/geocode/v1/json',
       {
         params: {
-          key: config.OPEN_CAGE_APPID,
+          key: OPEN_CAGE_APPID,
           q: `${position.coords.latitude}+${position.coords.longitude}`,
-        },
+        }
       },
     )
     const openWeatherResponse = await axios.get(
@@ -32,7 +34,7 @@ const WeatherReport = () => {
           lon: position.coords.longitude,
           exclude: 'minutely',
           units: 'metric',
-          appid: config.OPEN_WEATHER_APPID,
+          appid: OPEN_WEATHER_APPID
         },
       },
     )

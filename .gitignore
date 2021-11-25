@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # api key id
-
-config.js
+/src/openCageID.js
+/src/openWeatherID.js
