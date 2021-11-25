@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import config from '../config';
+import { Segment } from "semantic-ui-react"
 
 class WeatherReportClass extends Component {
   state = {
@@ -62,12 +63,14 @@ class WeatherReportClass extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
+      <Segment inverted color="teal">
         <div data-cy="weather-display">
           <h1 data-cy="location">{this.state.weatherInfo.city}</h1>
           <h2 data-cy="temp">{`${this.state.weatherInfo.temperature}°C`}</h2>
         </div>
-      </React.Fragment>
+      </Segment>
+      </>
     )
   };
 };
