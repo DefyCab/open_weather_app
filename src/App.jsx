@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Header } from "semantic-ui-react";
-import WeatherReport from "./component/WeatherReport";
+import WeatherReportClass from "./component/WeatherReportClass";
 
 const App = () => {
   return (
     <Container>
       <Header>Weather App</Header>
-      <WeatherReport />
+      <WeatherReportClass />
     </Container>
   );
 };
