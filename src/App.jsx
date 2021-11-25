@@ -6,7 +6,7 @@ const App = () => {
   return (
     <Container>
       <Header>
-        <Icon name="globe" /> 
+        <Icon  color='teal' name="globe" /> 
         Weather App 
         </Header>
       <WeatherReportClass />

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import config from '../config';
-import { Segment } from "semantic-ui-react"
+import { Segment, Grid, Header, Icon, Image } from "semantic-ui-react"
 
 class WeatherReportClass extends Component {
   state = {
@@ -44,7 +44,7 @@ class WeatherReportClass extends Component {
         },
       },
     );
-    
+
     let city = '';
     if (openCageResponse.data.results[0].components.hamlet) {
       city = openCageResponse.data.results[0].components.hamlet;
@@ -53,23 +53,40 @@ class WeatherReportClass extends Component {
     }
 
     const temperature = openWeatherResponse.data.current.temp.toFixed(1)
+    const icon = 'https://openweathermap.org/img/wn/' + openWeatherResponse.data.current.weather[0].icon + '.png'
+    let description = openWeatherResponse.data.current.weather[0].description
+    description = description.charAt(0).toUpperCase() + description.slice(1)
+
     this.setState({
       weatherInfo: {
         city: city,
-        temperature: temperature
+        temperature: temperature,
+        icon: icon,
+        description: description
       }
     });
-
   };
 
   render() {
     return (
       <>
         <Segment inverted color="teal">
-          <div data-cy="weather-display">
-            <h1 data-cy="location">{this.state.weatherInfo.city}</h1>
-            <h2 data-cy="temp">{`${this.state.weatherInfo.temperature}°C`}</h2>
-          </div>
+          <Grid columns={2} divided >
+            <Grid.Row data-cy="weather-display">
+              <Grid.Column>
+                <Header inverted data-cy="location">
+                  <Icon name="home" />
+                  {this.state.weatherInfo.city}</Header>
+                <Header inverted data-cy="temp">
+                  <Icon name="thermometer quarter" />
+                  {`${this.state.weatherInfo.temperature}°C`}</Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Image src={this.state.weatherInfo.icon} size='mini' />
+                <Header inverted data-cy="description" id="weather-description">{this.state.weatherInfo.description}</Header>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Segment>
       </>
     )

@@ -15,3 +15,7 @@ code {
 .container {
   margin-top: 2em;
 }
+
+#weather-description {
+  margin-top: 0.4em;
+}
