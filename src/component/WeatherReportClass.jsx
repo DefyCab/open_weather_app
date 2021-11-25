@@ -1,8 +1,8 @@
-import axios from 'axios'
-import React, { Component } from 'react'
+import axios from 'axios';
+import React, { Component } from 'react';
 import config from '../config';
 
-class Weatherreportclass extends Component {
+class WeatherReportClass extends Component {
   state = {
     weatherInfo: {
       city: '',
@@ -30,7 +30,7 @@ class Weatherreportclass extends Component {
           q: `${position.coord.latitude}+${position.coord.longitude}`,
         },
       },
-    )
+    );
 
     const openWeatherResponse = await axios.get(
       'https://api.openweathermap.org/data/2.5/onecall',
@@ -43,14 +43,14 @@ class Weatherreportclass extends Component {
           appid: config.OPEN_WEATHER_APPID
         },
       },
-    )
+    );
 
     this.setState({
       weatherInfo: {
         city: openCageResponse.data.results[0].components.hamlet,
         temperature: openWeatherResponse.data.current.temp
       }
-    })
+    });
 
   };
 
@@ -66,4 +66,4 @@ class Weatherreportclass extends Component {
   };
 };
 
-export default Weatherreportclass;
+export default WeatherReportClass;
