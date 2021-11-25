@@ -27,8 +27,8 @@ class WeatherReportClass extends Component {
       {
         params: {
           key: config.OPEN_CAGE_APPID,
-          q: `${position.coord.latitude}+${position.coord.longitude}`,
-        },
+          q: `${position.coord.latitude}+${position.coord.longitude}`
+        }
       },
     );
 
@@ -58,8 +58,8 @@ class WeatherReportClass extends Component {
     return (
       <React.Fragment>
         <div data-cy="weather-display">
-          <h1 data-cy="temp">{this.state.weatherInfo.city}</h1>
-          <h2 data-cy="location">{this.state.weatherInfo.temperature}</h2>
+          <h1 data-cy="location">{this.state.weatherInfo.city}</h1>
+          <h2 data-cy="temp">{`${this.state.weatherInfo.temperature}°C`}</h2>
         </div>
       </React.Fragment>
     )
