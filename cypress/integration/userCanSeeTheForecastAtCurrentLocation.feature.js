@@ -24,7 +24,7 @@ describe("Weather info for user's location", () => {
 
   it("is expected to be displayed on initial render", () => {
     cy.get("[data-cy=weather-display]").within(() => {
-      cy.get("[data-cy=temp]").should("contain", "2.22°C");
+      cy.get("[data-cy=temp]").should("contain", "2.2°C");
       cy.get("[data-cy=location]").should("contain", "Paradise City");
     });
   });

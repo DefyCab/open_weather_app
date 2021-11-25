@@ -44,7 +44,7 @@ class WeatherReportClass extends Component {
         },
       },
     );
-
+    
     let city = '';
     if (openCageResponse.data.results[0].components.hamlet) {
       city = openCageResponse.data.results[0].components.hamlet;
@@ -52,10 +52,11 @@ class WeatherReportClass extends Component {
       city = openCageResponse.data.results[0].components.city;
     }
 
+    const temperature = openWeatherResponse.data.current.temp.toFixed(1)
     this.setState({
       weatherInfo: {
         city: city,
-        temperature: openWeatherResponse.data.current.temp
+        temperature: temperature
       }
     });
 
@@ -64,12 +65,12 @@ class WeatherReportClass extends Component {
   render() {
     return (
       <>
-      <Segment inverted color="teal">
-        <div data-cy="weather-display">
-          <h1 data-cy="location">{this.state.weatherInfo.city}</h1>
-          <h2 data-cy="temp">{`${this.state.weatherInfo.temperature}°C`}</h2>
-        </div>
-      </Segment>
+        <Segment inverted color="teal">
+          <div data-cy="weather-display">
+            <h1 data-cy="location">{this.state.weatherInfo.city}</h1>
+            <h2 data-cy="temp">{`${this.state.weatherInfo.temperature}°C`}</h2>
+          </div>
+        </Segment>
       </>
     )
   };
