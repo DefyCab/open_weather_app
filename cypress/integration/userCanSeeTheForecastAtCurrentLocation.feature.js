@@ -8,7 +8,7 @@ describe("Weather info for user's location", () => {
     cy.visit("/", {
       onBeforeLoad(window) {
         const stubLocation = {
-          coord: {
+          coords: {
             latitude: 55.7842,
             longitude: 12.4518
           }

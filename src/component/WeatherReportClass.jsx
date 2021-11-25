@@ -21,13 +21,12 @@ class WeatherReportClass extends Component {
 
   async componentDidMount() {
     const position = await this.getPosition();
-
     const openCageResponse = await axios.get(
       'https://api.opencagedata.com/geocode/v1/json',
       {
         params: {
           key: config.OPEN_CAGE_APPID,
-          q: `${position.coord.latitude}+${position.coord.longitude}`
+          q: `${position.coords.latitude}+${position.coords.longitude}`
         }
       },
     );
@@ -36,8 +35,8 @@ class WeatherReportClass extends Component {
       'https://api.openweathermap.org/data/2.5/onecall',
       {
         params: {
-          lat: position.coord.latitude,
-          lon: position.coord.longitude,
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
           exclude: 'minutely',
           units: 'metric',
           appid: config.OPEN_WEATHER_APPID
@@ -45,9 +44,16 @@ class WeatherReportClass extends Component {
       },
     );
 
+    let city = '';
+    if (openCageResponse.data.results[0].components.hamlet) {
+      city = openCageResponse.data.results[0].components.hamlet;
+    } else {
+      city = openCageResponse.data.results[0].components.city;
+    }
+
     this.setState({
       weatherInfo: {
-        city: openCageResponse.data.results[0].components.hamlet,
+        city: city,
         temperature: openWeatherResponse.data.current.temp
       }
     });
