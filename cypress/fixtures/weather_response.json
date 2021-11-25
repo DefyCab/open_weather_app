@@ -1,0 +1,44 @@
+{
+  "coord": {
+    "lon": 12.4518,
+    "lat": 55.7842
+  },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 17,
+    "feels_like": 289.08,
+    "temp_min": 288.45,
+    "temp_max": 290.14,
+    "pressure": 1018,
+    "humidity": 79
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 2.12,
+    "deg": 159,
+    "gust": 2.72
+  },
+  "clouds": {
+    "all": 93
+  },
+  "dt": 1631637774,
+  "sys": {
+    "type": 2,
+    "id": 2010681,
+    "country": "DK",
+    "sunrise": 1631594412,
+    "sunset": 1631640694
+  },
+  "timezone": 7200,
+  "id": 2610155,
+  "name": "Virum",
+  "cod": 200
+}
